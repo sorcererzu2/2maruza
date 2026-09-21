@@ -1,0 +1,16 @@
+# gRPC server va mijoz — alohida konteynerlarda
+services:
+  grpc-server:
+    build: .
+    ports: [ "50051:50051" ]
+    environment: [ "KECHIKISH_MS=0" ]
+  grpc-mijoz:
+    build: .
+    command: [ "python", "mijoz.py" ]
+    environment: [ "SERVER=grpc-server:50051" ]   # manzil kodda emas, muhitda
+    depends_on: [ grpc-server ]
+    profiles: [ "mijoz" ]                         # faqat soʻralganda ishga tushadi
+
+networks:
+  default:
+    name: dt-tarmoq-a2

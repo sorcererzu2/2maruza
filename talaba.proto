@@ -1,0 +1,25 @@
+// talaba.proto — xizmat shartnomasi
+syntax = "proto3";
+package talaba;
+
+message IdSorovi   { string id = 1; }
+message KursSorovi { int32 kurs = 1; }
+
+message Talaba {
+  string id      = 1;
+  string ism     = 2;
+  int32  kurs    = 3;
+  double reyting = 4;
+}
+
+message Statistika {
+  int32  soni            = 1;
+  double ortacha_reyting = 2;
+}
+
+service TalabaXizmati {
+  rpc Ol(IdSorovi) returns (Talaba);                     // unary
+  rpc KursRoyxati(KursSorovi) returns (stream Talaba);   // server streaming
+  rpc Yukla(stream Talaba) returns (Statistika);         // client streaming
+  rpc Kuzat(stream IdSorovi) returns (stream Talaba);    // bidirectional
+}

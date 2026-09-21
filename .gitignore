@@ -1,0 +1,6 @@
+# generatsiya qilingan kod — gen.sh har safar qayta yaratadi
+talaba_pb2.py
+talaba_pb2_grpc.py
+__pycache__/
+*.pyc
+.venv/
