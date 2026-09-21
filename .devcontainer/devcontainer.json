@@ -1,0 +1,29 @@
+{
+  "name": "Taqsimlangan tizimlar — Amaliy 2 (gRPC)",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu-24.04",
+  "features": {
+    "ghcr.io/devcontainers/features/docker-in-docker:2": {
+      "version": "latest",
+      "dockerDashComposeVersion": "v2"
+    },
+    "ghcr.io/devcontainers/features/python:1": {
+      "version": "3.12"
+    }
+  },
+  "forwardPorts": [50051, 8080],
+  "portsAttributes": {
+    "50051": { "label": "gRPC server" },
+    "8080": { "label": "HTTP/JSON server" }
+  },
+  "postCreateCommand": "bash .devcontainer/setup.sh",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "ms-azuretools.vscode-docker",
+        "zxh404.vscode-proto3"
+      ]
+    }
+  },
+  "hostRequirements": { "cpus": 2 }
+}
